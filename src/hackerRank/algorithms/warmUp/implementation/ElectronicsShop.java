@@ -8,8 +8,28 @@ import java.util.Scanner;
 public class ElectronicsShop {
 
     static int getMoneySpent(int[] keyboards, int[] drives, int s){
-        // Complete this function
-        return  0;
+        int minDifference=Integer.MAX_VALUE;
+        int sum = 0;
+        int sumFinal = 0;
+        int diff = 0;
+        boolean haveMoney =false;
+        for (int i = 0; i < keyboards.length; i++) {
+            for (int j = 0; j < drives.length; j++) {
+                sum = keyboards[i]+drives[j];
+                diff = s - sum;
+                if (diff >= 0){
+                    haveMoney = true;
+                    if (diff < minDifference ){
+                        minDifference = diff;
+                        sumFinal=sum;
+                    }
+                }
+            }
+        }
+        if (!haveMoney){
+            return -1;
+        }
+        return  sumFinal;
     }
 
     public static void main(String[] args) {
